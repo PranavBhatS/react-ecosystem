@@ -1,6 +1,7 @@
 import { createTodo, deleteTodo, getTodoList, updateTodo } from "./actions";
 
-const uri = "http://localhost:5000/api/posts";
+// const uri = "http://localhost:5000/api/posts";
+const uri = "https://todo-backend-m.herokuapp.com/api/posts";
 export const addTodo = (text) => {
   let data = {
     title: text,
