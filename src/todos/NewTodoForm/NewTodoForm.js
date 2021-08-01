@@ -37,7 +37,7 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
           className={classes.input}
           value={inputValue}
           onChange={(e) => selectInpuValue(e.target.value)}
-          multiline="true"
+          multiline={true}
           rowsMax="3"
         />
      

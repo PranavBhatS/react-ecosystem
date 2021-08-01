@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -15,7 +15,6 @@ import moment from "moment";
 
 const TodoListItem = ({ todo, onRemovePress, onToggleStatus }) => {
   const { title, postStatus, createdAt, updatedAt, _id } = todo;
-  const childRef = createRef();
   let handleStatusChange = (event) => {
     onToggleStatus({
       text: title,
@@ -42,8 +41,12 @@ const TodoListItem = ({ todo, onRemovePress, onToggleStatus }) => {
               padding: "0 1rem",
             }}
           >
-            <p>Created on: {moment(createdAt).format("DD/MM/YYYY hh:mm:ss a")}</p>
-            <p>Updated on: {moment(updatedAt).format("DD/MM/YYYY hh:mm:ss a")}</p>
+            <p>
+              Created on: {moment(createdAt).format("DD/MM/YYYY hh:mm:ss a")}
+            </p>
+            <p>
+              Updated on: {moment(updatedAt).format("DD/MM/YYYY hh:mm:ss a")}
+            </p>
           </Box>
         </CardActionArea>
         <CardActions style={{ width: "100%", justifyContent: "flex-end" }}>
@@ -54,12 +57,8 @@ const TodoListItem = ({ todo, onRemovePress, onToggleStatus }) => {
               onChange={handleStatusChange}
               displayEmpty
             >
-              {AVAILABLE_STATUS.map((status) => (
-                <MenuItem
-                  ref={childRef}
-                  key={status.value}
-                  value={status.value}
-                >
+              {AVAILABLE_STATUS.map((status, index) => (
+                <MenuItem key={status.value} value={status.value}>
                   {status.label}
                 </MenuItem>
               ))}
@@ -85,3 +84,4 @@ const AVAILABLE_STATUS = [
   { value: "DONE", label: "Done" },
 ];
 export default TodoListItem;
+
